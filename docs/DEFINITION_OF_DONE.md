@@ -15,11 +15,14 @@ Written before the code. A line is only ticked when the evidence is next to it.
       commit e2c2f73cd
 - [x] A request with no login is refused. Evidence: HTTP 401,
       `docs/evidence/item1-endpoint-responses.txt`
-- [ ] The page opens from the task page and shows one bar per label. Evidence (screenshot):
-      opening part done: Actions → "Annotations per label" leads to `/tasks/1/label-counts`,
-      which calls the endpoint through cvat-core (200) and shows "3953 annotations across
-      80 labels", `docs/evidence/item2-task-actions-menu.png`,
-      `docs/evidence/item2-label-counts-page.png`, commits 11e045ac8, c57e8d40f. Bars: item 3.
+- [x] The page opens from the task page and shows one bar per label. Evidence:
+      Actions → "Annotations per label" leads to `/tasks/1/label-counts`, which calls the
+      endpoint through cvat-core (200) and shows "3953 annotations across 80 labels",
+      `docs/evidence/item2-task-actions-menu.png`, `docs/evidence/item2-label-counts-page.png`
+      (commits 11e045ac8, c57e8d40f). 80 bars, largest first, tooltip on hover shows
+      "person: 1,217" (same as the endpoint), `docs/evidence/item3-chart-full.png`,
+      `docs/evidence/item3-chart-tooltip.png` (commit cedbbd379). No new package:
+      `cvat-ui/package.json` and `yarn.lock` unchanged.
 - [ ] A task with no annotations shows an empty message instead of a chart. Evidence (screenshot):
 - [ ] A failed request shows an error with a Retry button, and Retry loads the chart once the
       server answers again. Evidence (screenshots):
