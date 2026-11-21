@@ -7200,6 +7200,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/RqId'
           description: Import of the backup file has started
+  /api/test/label-counts/{id}:
+    get:
+      operationId: test_retrieve_label_counts
+      summary: Get the number of annotations per label in a task
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - test
+      security:
+      - tokenAuth: []
+      - accessTokenAuth: []
+      - sessionAuth: []
+        csrfAuth: []
+        csrfHeaderAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/vnd.cvat+json:
+              schema:
+                $ref: '#/components/schemas/LabelCounts'
+          description: ''
   /api/users:
     get:
       operationId: users_list
@@ -9867,6 +9893,31 @@ components:
           readOnly: true
       required:
       - name
+    LabelCount:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        count:
+          type: integer
+      required:
+      - count
+      - id
+      - name
+    LabelCounts:
+      type: object
+      properties:
+        task_id:
+          type: integer
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelCount'
+      required:
+      - labels
+      - task_id
     LabelMappingEntryRequest:
       type: object
       properties:
