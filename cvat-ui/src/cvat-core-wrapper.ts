@@ -17,7 +17,7 @@ import {
 } from 'cvat-core/src/labels';
 import {
     SerializedAttribute, SerializedLabel, SerializedAPISchema,
-    SerializedApiToken, SerializedInterval,
+    SerializedApiToken, SerializedInterval, SerializedLabelCounts,
 } from 'cvat-core/src/server-response-types';
 import {
     OrganizationMembersFilter, AnalyticsEventsFilter, ApiTokensFilter, ApiTokenModifiableFields,
@@ -179,6 +179,7 @@ export type {
     ImageProcessing,
     SerializedImageFilter,
     SerializedInterval,
+    SerializedLabelCounts,
     WebhookEvent,
     CalibratedRelatedImageMetadata,
 };
