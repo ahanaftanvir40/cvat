@@ -1,0 +1,30 @@
+# Item 1 endpoint responses, 2026-11-21 17:03 +06, commit e15d95706
+
+$ curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/test/label-counts/1   # no login
+401
+
+$ curl -s -w " %{http_code}" -u admin:*** http://localhost:8080/api/test/label-counts/999
+{"detail":"No Task matches the given query."} 404
+
+$ curl -s -u admin:*** http://localhost:8080/api/test/label-counts/1   (first 3 labels, then totals)
+{
+  "task_id": 1,
+  "labels": [
+    {
+      "id": 1,
+      "name": "person",
+      "count": 1217
+    },
+    {
+      "id": 2,
+      "name": "bicycle",
+      "count": 45
+    },
+    {
+      "id": 3,
+      "name": "car",
+      "count": 195
+    }
+  ]
+}
+labels: 80 total: 3953 zero-count: ['toaster', 'hair drier']
