@@ -42,6 +42,7 @@ import UserGrowthData from './growth';
 import { JobValidationLayout, TaskValidationLayout } from './validation-layout';
 import { Request } from './request';
 import AboutData from './about';
+import { SerializedLabelCounts } from './server-response-types';
 import {
     runAction,
     callAction,
@@ -109,6 +110,9 @@ export default interface CVATCore {
     };
     growth: {
         get: (userId: number) => Promise<UserGrowthData[]>;
+    };
+    labelCounts: {
+        get: (taskId: number) => Promise<SerializedLabelCounts>;
     };
     apiTokens: {
         get: (filter: ApiTokensFilter) => Promise<PaginatedResource<ApiToken>>;

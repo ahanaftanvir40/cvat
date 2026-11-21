@@ -33,7 +33,7 @@ import Organization, { Invitation } from './organization';
 import Webhook from './webhook';
 import { ArgumentError } from './exceptions';
 import {
-    SerializedAsset, SerializedOrganization,
+    SerializedAsset, SerializedOrganization, SerializedLabelCounts,
 } from './server-response-types';
 import {
     AnalyticsEventsFilter, QualityConflictsFilter, QualityRequirementsFilter, ConsensusSettingsFilter,
@@ -196,6 +196,11 @@ export default function implementAPI(cvat: CVATCore): CVATCore {
     implementationMixin(cvat.growth.get, async (userId: number): Promise<UserGrowthData[]> => {
         const result = await serverProxy.growth.get(userId);
         return result.map((growthData) => new UserGrowthData(growthData));
+    });
+
+    implementationMixin(cvat.labelCounts.get, async (taskId: number): Promise<SerializedLabelCounts> => {
+        const result = await serverProxy.labelCounts.get(taskId);
+        return result;
     });
 
     implementationMixin(cvat.apiTokens.get, async (filter) => {

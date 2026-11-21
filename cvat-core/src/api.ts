@@ -183,6 +183,12 @@ function build(): CVATCore {
                 return result;
             },
         },
+        labelCounts: {
+            async get(taskId) {
+                const result = await PluginRegistry.apiWrapper(cvat.labelCounts.get, taskId);
+                return result;
+            },
+        },
         apiTokens: {
             async get(filter = {}) {
                 const result = await PluginRegistry.apiWrapper(cvat.apiTokens.get, filter);
@@ -532,6 +538,7 @@ function build(): CVATCore {
     cvat.frames = Object.freeze(cvat.frames);
     cvat.users = Object.freeze(cvat.users);
     cvat.growth = Object.freeze(cvat.growth);
+    cvat.labelCounts = Object.freeze(cvat.labelCounts);
     cvat.plugins = Object.freeze(cvat.plugins);
     cvat.capabilities = Object.freeze(cvat.capabilities);
     cvat.lambda = Object.freeze(cvat.lambda);

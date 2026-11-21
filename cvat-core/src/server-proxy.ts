@@ -17,7 +17,7 @@ import {
     SerializedRegister, SerializedJob, SerializedGuide, SerializedAsset, SerializedAPISchema,
     SerializedInvitationData, SerializedCloudStorage, SerializedFramesMetaData, SerializedCollection,
     SerializedRequest, SerializedJobValidationLayout, SerializedTaskValidationLayout, SerializedConsensusSettingsData,
-    SerializedApiToken, SerializedUserGrowthData,
+    SerializedApiToken, SerializedUserGrowthData, SerializedLabelCounts,
 } from './server-response-types';
 import {
     SerializedQualityConflictData, SerializedQualityReportData,
@@ -1704,6 +1704,17 @@ async function updateGrowthData(
     }
 }
 
+async function getLabelCounts(taskId: number): Promise<SerializedLabelCounts> {
+    const { backendAPI } = config;
+
+    try {
+        const response = await Axios.get(`${backendAPI}/test/label-counts/${taskId}`);
+        return response.data;
+    } catch (errorData) {
+        throw generateError(errorData);
+    }
+}
+
 export const PREVIEW_DEFAULT = Symbol('preview-default');
 export type PreviewResponse = Blob | typeof PREVIEW_DEFAULT | null;
 
@@ -2818,6 +2829,10 @@ export default Object.freeze({
     growth: Object.freeze({
         get: getGrowthData,
         update: updateGrowthData,
+    }),
+
+    labelCounts: Object.freeze({
+        get: getLabelCounts,
     }),
 
     apiTokens: Object.freeze({
