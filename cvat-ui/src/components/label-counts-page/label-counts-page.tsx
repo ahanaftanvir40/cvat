@@ -14,6 +14,7 @@ import notification from 'antd/lib/notification';
 import { getCore, SerializedLabelCounts } from 'cvat-core-wrapper';
 import GoBackButton from 'components/common/go-back-button';
 import CVATLoadingSpinner from 'components/common/loading-spinner';
+import LabelCountsChart from './label-counts-chart';
 
 const core = getCore();
 
@@ -50,9 +51,12 @@ function LabelCountsPage(): JSX.Element {
                     <Title level={4}>{`Annotations per label, task #${taskId}`}</Title>
                     {fetching && <CVATLoadingSpinner />}
                     {labelCounts && (
-                        <Text type='secondary'>
-                            {`${total} annotations across ${labelCounts.labels.length} labels`}
-                        </Text>
+                        <>
+                            <Text type='secondary'>
+                                {`${total} annotations across ${labelCounts.labels.length} labels`}
+                            </Text>
+                            <LabelCountsChart labels={labelCounts.labels} />
+                        </>
                     )}
                 </Col>
             </Row>

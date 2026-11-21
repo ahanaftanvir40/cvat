@@ -16,3 +16,13 @@
 .cvat-label-counts-inner-wrapper {
     @include cvat-management-page-inner-wrapper;
 }
+
+.cvat-label-counts-chart {
+    --label-counts-bar: #{$validation-progress-color};
+    --label-counts-text: #{$text-color};
+    --label-counts-text-secondary: #{$text-color-secondary};
+    --label-counts-grid: #{$border-color-1};
+
+    position: relative;
+    margin-top: $grid-unit-size * 2;
+}
