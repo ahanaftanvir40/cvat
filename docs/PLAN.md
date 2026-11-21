@@ -66,3 +66,15 @@ working item and list what was not reached and why.
 - **Permissions before item 5.** Because CVAT rejects views without a declared permission
   class, the endpoint starts with login-only access (`IsAuthenticated`). Until item 5 any
   logged-in user can read counts for any task; item 5 closes that.
+- **Imported a filtered COCO file instead of the full one.** Importing the full
+  `instances_val2017.json` into the 500-image task failed with `Could not match item id:
+  '000000397133' with any task frame`: CVAT aborts the whole import when the file mentions an
+  image the task does not have. A script kept outside the repository writes a COCO file with
+  only the 500 task images (3,541 annotations), which imports cleanly.
+- **"One annotation" means one stored shape, not one COCO object.** After import, task 1 has
+  3,953 shapes for COCO's 3,541 annotations. CVAT stores each separate polygon piece of an
+  object as its own shape and links the pieces with the same `group` number on that frame
+  (3,916 polygon pieces + 37 crowd masks = 3,953). I count shapes as CVAT stores them: it is
+  what users see as separate objects in CVAT, and `group` is a free-form user feature that can
+  mix labels, so folding groups would make the count depend on how people used it. The COCO
+  check therefore counts polygon pieces plus crowd masks per category.
