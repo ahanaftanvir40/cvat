@@ -22,10 +22,20 @@ Written before the code. A line is only ticked when the evidence is next to it.
       (commits 11e045ac8, c57e8d40f). 80 bars, largest first, tooltip on hover shows
       "person: 1,217" (same as the endpoint), `docs/evidence/item3-chart-full.png`,
       `docs/evidence/item3-chart-tooltip.png` (commit cedbbd379). No new package:
-      `cvat-ui/package.json` and `yarn.lock` unchanged.
-- [ ] A task with no annotations shows an empty message instead of a chart. Evidence (screenshot):
-- [ ] A failed request shows an error with a Retry button, and Retry loads the chart once the
-      server answers again. Evidence (screenshots):
+      `cvat-ui/package.json` and `yarn.lock` unchanged. Correction: on a normal-height window
+      the rows overlapped (the item 3 screenshot used a tall window and hid it). Found during
+      item 4 and corrected in ac63fb92d; canvas is now 1792 px on a 700 px window and the box
+      scrolls, `docs/evidence/item3-chart-700px-scrolled.png`, `docs/evidence/item4-states.txt`.
+- [x] A task with no annotations shows an empty message instead of a chart. Evidence: task 2
+      (3 images, 80 labels, endpoint total 0) shows "This task has no annotations yet" and no
+      chart, `docs/evidence/item4-empty-state.png`, `docs/evidence/item4-states.txt`,
+      commit 5d3256e30
+- [x] A failed request shows an error with a Retry button, and Retry loads the chart once the
+      server answers again. Evidence: blocked request shows "Could not load annotation counts /
+      Network error. The CVAT server is not reachable." with Retry; after unblocking, Retry gets
+      200 and the chart (3953 across 80 labels) with 0 page navigations. A missing task (999)
+      shows the server's 404 message the same way. `docs/evidence/item4-error-state.png`,
+      `docs/evidence/item4-after-retry.png`, `docs/evidence/item4-states.txt`, commit 5d3256e30
 
 ## Later items (only if items 1 to 4 are done)
 

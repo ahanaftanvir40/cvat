@@ -1,0 +1,13 @@
+# Item 4 browser check, 2026-11-21 23:36 +06, commit 5d3256e30
+# Chrome (headless) via playwright-core against http://localhost:3000 (dev server -> stack on :8080)
+# Error state forced by aborting requests to /api/test/label-counts/** (same effect as DevTools 'Block request URL'),
+# then the block is removed and Retry is clicked. Navigation count proves no page reload.
+
+[empty] text: This task has no annotations yet
+[empty] chart present: false
+[error] text: Could not load annotation counts Network error. The CVAT server is not reachable. Retry
+[retry] request status: 200
+[retry] canvas height (expect 80*22+32=1792): 1792 | viewport: 700
+[retry] summary: 3953 annotations across 80 labels
+[retry] page navigations during retry: 0 | url: http://localhost:3000/tasks/1/label-counts
+[404] text: Could not load annotation counts No Task matches the given query. Retry
