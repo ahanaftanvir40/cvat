@@ -1,0 +1,16 @@
+# Copyright (C) CVAT.ai Corporation
+#
+# SPDX-License-Identifier: MIT
+
+from rest_framework import serializers
+
+
+class LabelCountSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    count = serializers.IntegerField()
+
+
+class LabelCountsSerializer(serializers.Serializer):
+    task_id = serializers.IntegerField()
+    labels = LabelCountSerializer(many=True)
