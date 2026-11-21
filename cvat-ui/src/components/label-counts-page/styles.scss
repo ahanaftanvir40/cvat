@@ -11,6 +11,9 @@
 
 .cvat-label-counts-inner {
     @include cvat-management-page-inner;
+
+    overflow-y: auto;
+    padding-bottom: $grid-unit-size * 2;
 }
 
 .cvat-label-counts-inner-wrapper {
@@ -23,6 +26,9 @@
     --label-counts-text-secondary: #{$text-color-secondary};
     --label-counts-grid: #{$border-color-1};
 
+    // The page inner is a fixed-height flex column; without this the chart is squeezed
+    // to the visible height and the 80 label rows overlap.
+    flex-shrink: 0;
     position: relative;
     margin-top: $grid-unit-size * 2;
 }
