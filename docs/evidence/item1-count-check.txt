@@ -1,0 +1,87 @@
+# Item 1 count check: endpoint vs raw SQL vs COCO JSON (polygon pieces + crowd masks)
+# 2026-11-21 17:02 +06, task 1, commit base 06cf4e6ce
+# command: python3 -I ~/assessment/scripts/check_counts.py 1 ~/assessment/setup/instances_first500.json
+
+label               API    SQL   COCO  match
+person             1217   1217   1217  ok
+chair               227    227    227  ok
+car                 195    195    195  ok
+bottle              120    120    120  ok
+book                113    113    113  ok
+cup                 109    109    109  ok
+dining table        106    106    106  ok
+bowl                 61     61     61  ok
+motorcycle           56     56     56  ok
+wine glass           55     55     55  ok
+skis                 54     54     54  ok
+tie                  54     54     54  ok
+bird                 52     52     52  ok
+backpack             51     51     51  ok
+bench                50     50     50  ok
+handbag              46     46     46  ok
+bicycle              45     45     45  ok
+broccoli             45     45     45  ok
+potted plant         45     45     45  ok
+couch                41     41     41  ok
+knife                41     41     41  ok
+banana               39     39     39  ok
+boat                 38     38     38  ok
+bus                  38     38     38  ok
+traffic light        35     35     35  ok
+truck                35     35     35  ok
+horse                34     34     34  ok
+remote               34     34     34  ok
+surfboard            34     34     34  ok
+laptop               33     33     33  ok
+tv                   33     33     33  ok
+sports ball          31     31     31  ok
+tennis racket        31     31     31  ok
+zebra                31     31     31  ok
+carrot               29     29     29  ok
+cell phone           28     28     28  ok
+donut                28     28     28  ok
+kite                 27     27     27  ok
+suitcase             27     27     27  ok
+spoon                25     25     25  ok
+fork                 23     23     23  ok
+orange               23     23     23  ok
+vase                 23     23     23  ok
+keyboard             22     22     22  ok
+bed                  21     21     21  ok
+oven                 21     21     21  ok
+sink                 21     21     21  ok
+umbrella             21     21     21  ok
+apple                20     20     20  ok
+clock                20     20     20  ok
+sheep                20     20     20  ok
+elephant             19     19     19  ok
+pizza                19     19     19  ok
+sandwich             19     19     19  ok
+cat                  17     17     17  ok
+cow                  17     17     17  ok
+refrigerator         17     17     17  ok
+toilet               17     17     17  ok
+train                17     17     17  ok
+hot dog              15     15     15  ok
+mouse                15     15     15  ok
+teddy bear           15     15     15  ok
+frisbee              14     14     14  ok
+parking meter        14     14     14  ok
+cake                 13     13     13  ok
+skateboard           13     13     13  ok
+airplane             12     12     12  ok
+baseball bat         11     11     11  ok
+fire hydrant         11     11     11  ok
+baseball glove       10     10     10  ok
+dog                   9      9      9  ok
+giraffe               9      9      9  ok
+snowboard             7      7      7  ok
+bear                  4      4      4  ok
+microwave             4      4      4  ok
+stop sign             4      4      4  ok
+scissors              2      2      2  ok
+toothbrush            1      1      1  ok
+hair drier            0      0      0  ok
+toaster               0      0      0  ok
+TOTAL              3953   3953   3953
+labels=80 mismatches=0
